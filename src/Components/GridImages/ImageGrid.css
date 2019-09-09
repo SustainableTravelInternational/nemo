@@ -1,0 +1,10 @@
+.ImageGrid {
+    margin: 20px auto;
+    /* max-width: 800px; */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: baseline;
+    align-content: stretch;
+}

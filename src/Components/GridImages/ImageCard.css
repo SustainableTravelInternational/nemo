@@ -1,0 +1,29 @@
+.ImageCard {
+    position: relative;
+    margin: 20px;
+    display: grid;
+    width: 200px;
+    height: 200px;
+    background-color: grey;
+}
+.ImageCardTool {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.ImageCard_Hover-active {
+    display: default;
+}
+.ImageCard_Hover-inactive {
+    display: none;
+}
+
+.ImageCard .ImageCard_image {
+    width: 200px;
+    height: inherit;
+    object-fit: cover;
+}

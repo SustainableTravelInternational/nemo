@@ -1,26 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import ImageGridContainer from './Components/Grid/ImageGridContainer';
+import SingleImageContainer from './Components/SingleImage/SingleImageContainer';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [view, setView] = useState('ImageGridContainer');
+    const [image, setImage] = useState(null);
+
+    const changeView = newView => setView(newView);
+
+    const changeImage = image => setImage(image);
+
+    return (
+        <div className="App">
+            {view === 'ImageGridContainer' && (
+                <ImageGridContainer
+                    changeImage={changeImage}
+                    changeView={changeView}
+                />
+            )}
+            {view === 'SingleImageContainer' && (
+                <SingleImageContainer image={image} changeView={changeView} />
+            )}
+        </div>
+    );
 }
 
 export default App;
