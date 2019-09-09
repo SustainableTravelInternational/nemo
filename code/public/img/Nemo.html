@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<!-- saved from url=(0033)http://localhost:8000/admin/users -->
+<html lang="en" style="height: auto; min-height: 100%;"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="K6y333kEqIJtdKyTDM2ITDYyaRaU27Gb1Oe9LFSX">
+    <title>Nemo</title>
+
+    <!-- Bootstrap 3.3.7 -->
+    <link rel="stylesheet" href="./Nemo_files/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="./Nemo_files/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="./Nemo_files/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="./Nemo_files/AdminLTE.min.css">
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+       folder instead of downloading all of them to reduce the load. -->
+    <link rel="stylesheet" href="./Nemo_files/_all-skins.min.css">
+
+    <!-- Google Font -->
+    <link rel="stylesheet" href="./Nemo_files/css">
+
+    <!-- Favicons -->
+    
+				<link rel="shortcut icon" sizes="16x16 24x24 32x32 48x48 64x64" href="http://localhost:8000/favicon.ico">
+				<link rel="apple-touch-icon" sizes="57x57" href="http://localhost:8000/img/icons/favicon-57.png">
+				<link rel="apple-touch-icon-precomposed" sizes="57x57" href="http://localhost:8000/img/icons/favicon-57.png">
+				<link rel="apple-touch-icon" sizes="72x72" href="http://localhost:8000/img/icons/favicon-72.png">
+				<link rel="apple-touch-icon" sizes="114x114" href="http://localhost:8000/img/icons/favicon-114.png">
+				<link rel="apple-touch-icon" sizes="120x120" href="http://localhost:8000/img/icons/favicon-120.png">
+				<link rel="apple-touch-icon" sizes="144x144" href="http://localhost:8000/img/icons/favicon-144.png">
+				<link rel="apple-touch-icon" sizes="152x152" href="http://localhost:8000/img/icons/favicon-152.png">
+				<meta name="application-name" content="Mojito">
+				<meta name="msapplication-TileImage" content="/img/icons/favicon-144.png">
+				<meta name="msapplication-TileColor" content="#2A2A2A">
+			
+    	<link rel="stylesheet" href="./Nemo_files/dataTables.bootstrap.min.css">
+<style type="text/css">#bat-overlay{width:100%;height:100%;position:fixed;z-index:10000000;top:0;left:0;pointer-events:none}#bat-filter-bg{position:fixed;left:0px;top:0px;right:0px;bottom:0px;z-index:-1999999999;display:none}html[bat="0"],html[bat="b3"]{filter:none;-webkit-filter:none}html[bat="b1"]{filter:blur(1px);-webkit-filter:blur(1px);-moz-filter:blur(1px)}html[bat="b2"]{filter:blur(5px);-webkit-filter:blur(5px);-moz-filter:blur(5px)}html[bat="cb1"]{filter:url(#bat-protanopia);-webkit-filter:url(#bat-protanopia);-moz-filter:url(#bat-protanopia)}html[bat="cb2"]{filter:url(#bat-protanomaly);-webkit-filter:url(#bat-protanomaly);-moz-filter:url(#bat-protanomaly)}html[bat="cb3"]{filter:url(#bat-deuteranopia);-webkit-filter:url(#bat-deuteranopia);-moz-filter:url(#bat-deuteranopia)}html[bat="cb4"]{filter:url(#bat-deuteranomaly);-webkit-filter:url(#bat-deuteranomaly);-moz-filter:url(#bat-deuteranomaly)}html[bat="cb5"]{filter:url(#bat-tritanopia);-webkit-filter:url(#bat-tritanopia);-moz-filter:url(#bat-tritanopia)}html[bat="cb6"]{filter:url(#bat-tritanomaly);-webkit-filter:url(#bat-tritanomaly);-moz-filter:url(#bat-tritanomaly)}html[bat="cb7"]{filter:url(#bat-achromatopsia);-webkit-filter:url(#bat-achromatopsia);-moz-filter:url(#bat-achromatopsia)}html[bat="cb8"]{filter:url(#bat-achromatomaly);-webkit-filter:url(#bat-achromatomaly);-moz-filter:url(#bat-achromatomaly)}html[bat="hc1"]{filter:url(#bat-highcontrast);-webkit-filter:url(#bat-highcontrast);-moz-filter:url(#bat-highcontrast)}html[bat="hc1"] img[src*="jpg"],html[bat="hc1"] img[src*="jpeg"],html[bat="hc1"] svg image,html[bat="hc1"] embed,html[bat="hc1"] object,html[bat="hc1"] video{filter:url(#bat-highcontrast-back);-webkit-filter:url(#bat-highcontrast-back);-moz-filter:url(#bat-highcontrast-back)}html[bat="hc2"]{filter:url(#bat-grayscale);-webkit-filter:url(#bat-grayscale);-moz-filter:url(#bat-grayscale)}html[bat="hc2"] img[src*="jpg"],html[bat="hc2"] img[src*="jpeg"],html[bat="hc2"] svg image,html[bat="hc2"] embed,html[bat="hc2"] object,html[bat="hc2"] video{filter:url(#bat-grayscale-back);-webkit-filter:url(#bat-grayscale-back);-moz-filter:url(#bat-grayscale-back)}html[bat="hc3"]{filter:url(#bat-inverted-color);-webkit-filter:url(#bat-inverted-color);-moz-filter:url(#bat-inverted-color)}html[bat="hc3"] img[src*="jpg"],html[bat="hc3"] img[src*="jpeg"],html[bat="hc3"] svg image,html[bat="hc3"] embed,html[bat="hc3"] object,html[bat="hc3"] video{filter:url(#bat-inverted-color-back);-webkit-filter:url(#bat-inverted-color-back);-moz-filter:url(#bat-inverted-color-back)}html[bat="hc4"]{filter:url(#bat-inverted-grayscale);-webkit-filter:url(#bat-inverted-grayscale);-moz-filter:url(#bat-inverted-grayscale)}html[bat="hc3"] img[src*="jpg"],html[bat="hc3"] img[src*="jpeg"],html[bat="hc3"] img.rg_i,html[bat="hc3"] svg image,html[bat="hc3"] embed,html[bat="hc3"] object,html[bat="hc3"] video{filter:url(#bat-inverted-color-back);-webkit-filter:url(#bat-inverted-color-back);-moz-filter:url(#bat-inverted-color-back)}html[bat="hc5"]{filter:url(#bat-yellow-on-black);-webkit-filter:url(#bat-yellow-on-black);-moz-filter:url(#bat-yellow-on-black)}html[bat="hc5"] img[src*="jpg"],html[bat="hc5"] img[src*="jpeg"],html[bat="hc5"] svg image,html[bat="hc5"] embed,html[bat="hc5"] object,html[bat="hc5"] video{filter:url(#bat-yellow-on-black-back);-webkit-filter:url(#bat-yellow-on-black-back);-moz-filter:url(#bat-yellow-on-black-back)}
+</style><style type="text/css">div.oaa-element-overlay{position:absolute;overflow:hidden;box-sizing:border-box;border:3px solid;pointer-events:none}div.oaa-element-overlay>div{float:right;padding:1px 1px 4px 4px;color:white;font-family:arial, helvetica, sans-serif;font-size:15px;pointer-events:auto}div.oaa-element-overlay>div:hover{cursor:grab;cursor:-moz-grab;cursor:-webkit-grab}div.oaa-message-dialog{position:absolute;overflow:auto;z-index:2147483647;padding:4px;border:2px solid #333;box-shadow:2px 2px 4px #555;background:#fff;color:#333;font-family:arial, helvetica, sans-serif}div.oaa-message-dialog>button{float:right}div.oaa-message-dialog>button:after{content:"Close"}div.oaa-message-dialog>h2{margin:0;padding:8px 8px 0;color:inherit;font-family:inherit;font-size:22px}div.oaa-message-dialog>div{margin:0;padding:10px 8px 12px;font-size:14px;line-height:150%}div.oaa-message-dialog>div ul{margin:0 1em;padding-top:0.5em;padding-left:1em}div.oaa-message-dialog>div ul li{margin-top:0}
+</style></head>
+<body class="skin-blue fixed sidebar-mini sidebar-mini-expand-feature" style="height: auto; min-height: 100%;">
+
+    <!-- Site wrapper -->
+    <div class="wrapper" style="height: auto; min-height: 100%;">
+        <header class="main-header">
+    <!-- Logo -->
+    <a href="http://localhost:8000/" class="logo">
+      <!-- mini logo for sidebar mini 50x50 pixels -->
+      <span class="logo-mini">NM</span>
+      <!-- logo for regular state and mobile devices -->
+      <span class="logo-lg">Nemo</span>
+    </a>
+    <!-- Header Navbar: style can be found in header.less -->
+    <nav class="navbar navbar-static-top">
+      <!-- Sidebar toggle button-->
+      <a href="http://localhost:8000/admin/users#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+
+      <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+          <!-- Notifications: style can be found in dropdown.less -->
+          <li class="dropdown notifications-menu">
+            <a href="http://localhost:8000/admin/users#" class="dropdown-toggle" data-toggle="dropdown">
+              <i class="fa fa-bell-o"></i>
+              <span class="label label-warning">10</span>
+            </a>
+            <ul class="dropdown-menu">
+              <li class="header">You have 10 notifications</li>
+              <li>
+                <!-- inner menu: contains the actual data -->
+                <ul class="menu">
+                  <li>
+                    <a href="http://localhost:8000/admin/users#">
+                      <i class="fa fa-users text-aqua"></i> 5 new members joined today
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="footer"><a href="http://localhost:8000/admin/users#">View all</a></li>
+            </ul>
+          </li>
+          <!-- User Account: style can be found in dropdown.less -->
+          <li class="dropdown user user-menu">
+            <a href="http://localhost:8000/admin/users#" class="dropdown-toggle" data-toggle="dropdown">
+              <img src="./Nemo_files/user2-160x160.jpg" class="user-image" alt="User Image">
+              <span class="hidden-xs">bahram karimi</span>
+            </a>
+            <ul class="dropdown-menu">
+              <!-- User image -->
+              <li class="user-header">
+                <img src="./Nemo_files/user2-160x160.jpg" class="img-circle" alt="User Image">
+
+                <p>
+                  bahram karimi  - superadmin
+                  <small>Member since 2019-09-03 20:33:30</small>
+                </p>
+              </li>
+              <!-- Menu Footer-->
+              <li class="user-footer">
+                <div class="pull-left">
+                  <a href="http://localhost:8000/admin/users#" class="btn btn-default btn-flat">Profile</a>
+                </div>
+                <div class="pull-right">
+                  <a href="javascript:document.logoutForm.submit()" class="btn btn-default btn-flat">Sign out</a>
+                  <form action="http://localhost:8000/admin/logout" method="POST" name="logoutForm">
+                    <input type="hidden" name="_token" value="K6y333kEqIJtdKyTDM2ITDYyaRaU27Gb1Oe9LFSX">                  </form>
+                </div>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+        <!-- Left side column. contains the sidebar -->
+  <aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 297px;"><section class="sidebar" style="overflow: hidden; width: auto; height: 297px;">
+      <!-- search form -->
+      <form action="http://localhost:8000/admin/users#" method="get" class="sidebar-form">
+        <div class="input-group">
+          <input type="text" name="q" class="form-control" placeholder="Search..." autocomplete="false">
+          <span class="input-group-btn">
+            <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+            </button>
+          </span>
+        </div>
+      </form>
+      <!-- /.search form -->
+      <!-- sidebar menu: : style can be found in sidebar.less -->
+      <ul class="sidebar-menu tree" data-widget="tree">
+        <li><a href="http://localhost:8000/admin/home"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
+        <li class="header">MAIN NAVIGATION</li>
+        <li><a href="http://localhost:8000/admin/users"><i class="fa fa-users"></i> <span>Users</span></a></li>
+      </ul>
+    </section><div class="slimScrollBar" style="background: rgb(0, 0, 0); width: 7px; position: absolute; top: -49px; opacity: 0.4; display: none; border-radius: 7px; z-index: 99; right: 1px; height: 297px;"></div><div class="slimScrollRail" style="width: 7px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;"></div></div>
+    <!-- /.sidebar -->
+  </aside>
+        <div class="content-wrapper" style="min-height: 347px;">
+            <div class="row">
+                <div class="col-xs-6">
+                    <section class="content-header">
+                      <h1>
+                        Users                        <small>all users list</small>
+                      </h1>
+                    </section>
+                </div>
+                <div class="col-xs-6">
+                    	<div class="content-header btn-group pull-right">
+      <button type="button" class="btn btn-default btn-flat">Action</button>
+      <button type="button" class="btn btn-default btn-flat dropdown-toggle" data-toggle="dropdown">
+        <span class="caret"></span>
+        <span class="sr-only">Toggle Dropdown</span>
+      </button>
+      <ul class="dropdown-menu" role="menu">
+        <li><a href="http://localhost:8000/admin/users#">Action</a></li>
+        <li><a href="http://localhost:8000/admin/users#">Another action</a></li>
+        <li><a href="http://localhost:8000/admin/users#">Something else here</a></li>
+        <li class="divider"></li>
+        <li><a href="http://localhost:8000/admin/users#">Separated link</a></li>
+      </ul>
+    </div>
+                </div>
+            </div>
+            <section class="content">
+                                
+<div class="box">
+    <div class="box-body">
+    	<div id="users-table_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer"><div class="row"><div class="col-sm-6"><div class="dataTables_length" id="users-table_length"><label>Show <select name="users-table_length" aria-controls="users-table" class="form-control input-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label></div></div><div class="col-sm-6"><div id="users-table_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control input-sm" placeholder="" aria-controls="users-table"></label></div></div></div><div class="row"><div class="col-sm-12"><table class="table table-bordered table-hover dataTable no-footer" id="users-table" role="grid" aria-describedby="users-table_info" style="width: 904px;">
+	        <thead>
+	            <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="users-table" rowspan="1" colspan="1" style="width: 29px;" aria-sort="ascending" aria-label="Id: activate to sort column descending">Id</th><th class="sorting" tabindex="0" aria-controls="users-table" rowspan="1" colspan="1" style="width: 96px;" aria-label="Name: activate to sort column ascending">Name</th><th class="sorting" tabindex="0" aria-controls="users-table" rowspan="1" colspan="1" style="width: 196px;" aria-label="Email: activate to sort column ascending">Email</th><th class="sorting" tabindex="0" aria-controls="users-table" rowspan="1" colspan="1" style="width: 77px;" aria-label="Role: activate to sort column ascending">Role</th><th class="sorting" tabindex="0" aria-controls="users-table" rowspan="1" colspan="1" style="width: 136px;" aria-label="Created At: activate to sort column ascending">Created At</th><th class="sorting" tabindex="0" aria-controls="users-table" rowspan="1" colspan="1" style="width: 137px;" aria-label="Updated At: activate to sort column ascending">Updated At</th></tr>
+	        </thead>
+	    <tbody><tr role="row" class="odd"><td class="sorting_1">1</td><td>bahram karimi</td><td>bahramkb@gmail.com</td><td>superadmin</td><td>2019-09-03 20:33:30</td><td>2019-09-03 20:33:30</td></tr><tr role="row" class="even"><td class="sorting_1">2</td><td>a</td><td>bahramkb222@gmail.com</td><td></td><td>2019-09-04 07:00:50</td><td>2019-09-04 07:00:50</td></tr><tr role="row" class="odd"><td class="sorting_1">3</td><td>a</td><td>bahramkb2222@gmail.com</td><td></td><td>2019-09-04 07:02:21</td><td>2019-09-04 07:02:21</td></tr></tbody></table><div id="users-table_processing" class="dataTables_processing panel panel-default" style="display: none;">Processing...</div></div></div><div class="row"><div class="col-sm-5"><div class="dataTables_info" id="users-table_info" role="status" aria-live="polite">Showing 1 to 3 of 3 entries</div></div><div class="col-sm-7"><div class="dataTables_paginate paging_simple_numbers" id="users-table_paginate"><ul class="pagination"><li class="paginate_button previous disabled" id="users-table_previous"><a href="http://localhost:8000/admin/users#" aria-controls="users-table" data-dt-idx="0" tabindex="0">Previous</a></li><li class="paginate_button active"><a href="http://localhost:8000/admin/users#" aria-controls="users-table" data-dt-idx="1" tabindex="0">1</a></li><li class="paginate_button next disabled" id="users-table_next"><a href="http://localhost:8000/admin/users#" aria-controls="users-table" data-dt-idx="2" tabindex="0">Next</a></li></ul></div></div></div></div>
+    </div>
+</div>
+
+            </section>
+        </div>
+
+    </div>
+
+    <!-- jQuery 3 -->
+    <script src="./Nemo_files/jquery.min.js"></script>
+    <!-- Bootstrap 3.3.7 -->
+    <script src="./Nemo_files/bootstrap.min.js"></script>
+    <!-- SlimScroll -->
+    <script src="./Nemo_files/jquery.slimscroll.min.js"></script>
+    <!-- FastClick -->
+    <script src="./Nemo_files/fastclick.js"></script>
+    <!-- AdminLTE App -->
+    <script src="./Nemo_files/adminlte.min.js"></script>
+    <!-- Admin App -->
+    <script src="./Nemo_files/admin.js"></script>
+
+    	<script src="./Nemo_files/jquery.dataTables.min.js"></script>
+	<script src="./Nemo_files/dataTables.bootstrap.min.js"></script>
+	<script type="text/javascript">
+		$(function() {
+		    $('#users-table').DataTable({
+		        processing: true,
+		        serverSide: true,
+		        ajax: 'http://localhost:8000/admin/usersData',
+		        columns: [
+		            { data: 'id', name: 'id' },
+		            { data: 'name', name: 'name' },
+		            { data: 'email', name: 'email' },
+		            { data: 'role', name: 'role' },
+		            { data: 'created_at', name: 'created_at' },
+		            { data: 'updated_at', name: 'updated_at' }
+		        ]
+		    });
+		});
+	</script>
+
+
+</body></html>
