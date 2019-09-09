@@ -3,7 +3,7 @@ services:
     nginx:
         image: nginx:latest
         ports:
-            - "5000:80"
+            - "5001:80"
         links:
             - fpm
         volumes:
@@ -23,13 +23,13 @@ services:
     db:
         build: ./docker/mysql
         ports:
-            - "3360:3360"
+            - "3361:3360"
         volumes:
             - ./docker/mysql/mysqld.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf
             - data:/var/lib/mysql
         environment:
-            MYSQL_ROOT_PASSWORD: admin2490?
-            MYSQL_DATABASE: mojito
+            MYSQL_ROOT_PASSWORD: rootp@ss
+            MYSQL_DATABASE: nemo
 
 volumes:
     data:
