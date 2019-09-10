@@ -1,10 +1,12 @@
 #!/bin/bash
 
-docker-compose up --build
+docker-compose up -d --build
+
+sleep 30
 
 docker-compose exec fpm composer install
 
-cp .env.example .env
+docker-compose exec fpm cp .env.example .env
 
 docker-compose exec fpm php artisan migrate
 
