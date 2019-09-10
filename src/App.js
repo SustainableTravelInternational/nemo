@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
-import ImageGridContainer from './Components/Grid/ImageGridContainer';
+import ImageGridContainer from './Components/GridImages/ImageGridContainer';
 import SingleImageContainer from './Components/SingleImage/SingleImageContainer';
 
 function App() {
