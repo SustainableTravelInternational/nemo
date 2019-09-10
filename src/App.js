@@ -1,29 +1,18 @@
-import React, { useState } from 'react';
-import './App.css';
-import ImageGridContainer from './Components/GridImages/ImageGridContainer';
+import React from 'react';
+import { useRoutes } from 'hookrouter';
+import HomePage from './Components/HomePage';
 import SingleImageContainer from './Components/SingleImage/SingleImageContainer';
+import NotFoundPage from './Components/NotFoundPage';
 
-function App() {
-    const [view, setView] = useState('ImageGridContainer');
-    const [image, setImage] = useState(null);
+const App = () => {
+    const routes = {
+        '/': () => <HomePage />,
+        '/p/:id': ({ id }) => <SingleImageContainer id={id} />,
+        '/whoops': () => <NotFoundPage />,
+    };
 
-    const changeView = newView => setView(newView);
-
-    const changeImage = image => setImage(image);
-
-    return (
-        <div className="App">
-            {view === 'ImageGridContainer' && (
-                <ImageGridContainer
-                    changeImage={changeImage}
-                    changeView={changeView}
-                />
-            )}
-            {view === 'SingleImageContainer' && (
-                <SingleImageContainer image={image} changeView={changeView} />
-            )}
-        </div>
-    );
-}
+    const routeResult = useRoutes(routes);
+    return routeResult || <NotFoundPage />;
+};
 
 export default App;

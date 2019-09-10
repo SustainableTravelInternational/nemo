@@ -1,22 +1,23 @@
 import React, { useState } from 'react';
+import { navigate } from 'hookrouter';
 import './ImageCard.css';
 
 const ImageCard = props => {
     const [hover, setHover] = useState(false);
-    const { image, changeImage, changeView } = props;
+    const { image } = props;
     const ImageCardHoverClasses = hover
         ? 'ImageCard_Hover-active'
         : 'ImageCard_Hover-inactive';
 
-    const changeViewToImage = () => {
-        changeImage(image);
-        changeView('SingleImageContainer');
+    const navigateToSingleImage = () => {
+        navigate(`/p/${image.id}`);
+        window.location.reload();
     };
 
     return (
         <div
             className={`ImageCard`}
-            onClick={() => changeViewToImage()}
+            onClick={() => navigateToSingleImage()}
             onMouseEnter={() => setHover(true)}
             onMouseLeave={() => setHover(false)}
         >
