@@ -1,9 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './ImageGrid.css';
-import axios from 'axios';
 import ImageCard from './ImageCard';
-
-import DummyData from '../../DummyData';
 
 const renderImages = images => {
     return images.map(item => {
@@ -11,18 +8,8 @@ const renderImages = images => {
     });
 };
 
-const ImageGrid = () => {
-    const [images, setImages] = useState(DummyData);
-
-    const fetchImages = () => {
-        async function fetchData() {
-            const res = await axios.get('https');
-            res.then(res => setImages(res.data).catch(err => console.log(err)));
-        }
-        fetchData();
-    };
-
-    useEffect(() => fetchImages());
+const ImageGrid = props => {
+    const { images } = props;
 
     return <div className={'ImageGrid'}>{renderImages(images)}</div>;
 };

@@ -11,7 +11,6 @@ const ImageCard = props => {
 
     const navigateToSingleImage = () => {
         navigate(`/p/${image.id}`);
-        window.location.reload();
     };
 
     return (
