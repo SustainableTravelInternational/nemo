@@ -1,5 +1,5 @@
 import React from 'react';
-import './ImageGrid.css';
+import {Grid } from '@material-ui/core'
 import ImageCard from './ImageCard';
 
 const renderImages = images => {
@@ -11,7 +11,12 @@ const renderImages = images => {
 const ImageGrid = props => {
     const { images } = props;
 
-    return <div className={'ImageGrid'}>{renderImages(images)}</div>;
+    return (<Grid
+  container
+  direction="row-reverse"
+  justify="center"
+  alignItems="stretch"
+>{renderImages(images)}</Grid>);
 };
 
 export default ImageGrid;
