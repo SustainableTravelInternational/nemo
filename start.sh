@@ -11,3 +11,5 @@ docker-compose exec fpm cp .env.example .env
 docker-compose exec fpm php artisan migrate
 
 docker-compose exec fpm php artisan db:seed
+
+chmod -R go+w code/bootstrap code/storage
