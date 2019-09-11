@@ -8,6 +8,7 @@
         <li><a href="<?php echo e(route('home')); ?>"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
         <li class="header">MAIN NAVIGATION</li>
         <li><a href="<?php echo e(route('users')); ?>"><i class="fa fa-users"></i> <span>Users</span></a></li>
+        <li><a href="<?php echo e(route('images')); ?>"><i class="fa  fa-file-image-o"></i> <span>Images</span></a></li>
       </ul>
     </section>
     <!-- /.sidebar -->

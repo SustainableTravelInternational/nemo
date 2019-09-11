@@ -64,7 +64,13 @@ class RegisterController extends Controller {
 	}
 
 	protected function sendValidationResponse(Request $request, $validator) {
-		$response['message'] = $validator->messages();
+		$response['message'] = '';
+
+		$errors = $validator->messages();
+		foreach ($errors->toArray() as $error) {
+			$response['message'] .= $error[0] . ' ';
+		}
+
 		$response['status'] = Response::HTTP_BAD_REQUEST;
 		return response()->json(
 			$response,

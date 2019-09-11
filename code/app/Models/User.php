@@ -28,7 +28,7 @@ class User extends Authenticatable {
 	 * @var array
 	 */
 	protected $hidden = [
-		'password', 'remember_token',
+		'password', 'remember_token', 'deleted_at', 'email_verified_at',
 	];
 
 	/**
@@ -66,6 +66,7 @@ class User extends Authenticatable {
 	public function getProfilePhoto() {
 		if (isset($this->profile_photo)) {
 			return env('DATA_PROFILE_PICTURE_FOLDER') .
+			$this->created_at->year . '/' .
 			$this->created_at->month . '/' .
 			$this->created_at->day . '/' .
 			$this->profile_photo;
@@ -87,5 +88,12 @@ class User extends Authenticatable {
 
 	public function setPasswordAttribute($value) {
 		$this->attributes['password'] = Hash::make($value);
+	}
+
+	/**
+	 * Get the images for the user.
+	 */
+	public function images() {
+		return $this->hasMany('App\Models\Image');
 	}
 }
