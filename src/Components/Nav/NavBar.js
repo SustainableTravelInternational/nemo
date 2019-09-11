@@ -1,11 +1,29 @@
 import React from 'react';
-import { AppBar, Toolbar, Typography, InputBase } from '@material-ui/core';
+import {
+    AppBar,
+    Button,
+    InputBase,
+    Toolbar,
+    Typography,
+} from '@material-ui/core';
 import { fade, makeStyles } from '@material-ui/core/styles';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import logo from './logo.png';
 
 const useStyles = makeStyles(theme => ({
-    navBar: {
+    appBar: {
         backgroundColor: '#fff',
-        boxShadow: "0 14px 28px rgba(0,0,0,0.25)" },
+        boxShadow: '0 14px 28px rgba(0,0,0,0.25)',
+    },
+    toolBar: {
+        marginLeft: 'calc((100vw - 960px)/2)',
+        marginRight: 'calc((100vw - 960px)/2)',
+    },
+    logo: {
+        height: 30,
+        padding: 5,
+    },
     root: {
         flexGrow: 1,
     },
@@ -16,7 +34,12 @@ const useStyles = makeStyles(theme => ({
             display: 'block',
         },
         color: '#28b7b2',
-        fontSize: 36
+        fontSize: 36,
+    },
+    button: {
+        fontWeight: 'unset',
+        borderRadius: 25,
+        textTransform: 'unset',
     },
     search: {
         position: 'relative',
@@ -51,26 +74,42 @@ const useStyles = makeStyles(theme => ({
 const NavBar = () => {
     const classes = useStyles();
 
-    return (<AppBar position="sticky">
-                <Toolbar className={classes.navBar}>
-                <Typography className={classes.title} variant="h6" noWrap>
-            Nemo
-          </Typography>
-                    <div className={classes.search}>
-                        <div className={classes.searchIcon}>
-                            {/* <SearchIcon /> */}
-                        </div>
-                        <InputBase
-                            placeholder="Search…"
-                            classes={{
-                                root: classes.inputRoot,
-                                input: classes.inputInput,
-                            }}
-                            inputProps={{ 'aria-label': 'search' }}
-                        />
+    return (
+        <AppBar position="sticky" className={classes.appBar}>
+            <Toolbar className={classes.toolBar}>
+                <div style={{ flexGrow: 1, flexBasis: 400 }}>
+                    <img className={classes.logo} src={logo} alt={'NEMO'} />
+                </div>
+                <Button
+                    variant="contained"
+                    color="primary"
+                    className={classes.button}
+                >
+                    <FontAwesomeIcon
+                        icon={faPlus}
+                        style={{ paddingRight: 5 }}
+                    />
+                    Submit your photos
+                </Button>
+                <Button color="primary" className={classes.button}>
+                    Sign up
+                </Button>
+                {/* <div className={classes.search}> */}
+                {/*<div className={classes.searchIcon}>
+                         <SearchIcon /> 
                     </div>
-                </Toolbar>
-            </AppBar>)
-}
+                    <InputBase
+                        placeholder="Search…"
+                        classes={{
+                            root: classes.inputRoot,
+                            input: classes.inputInput,
+                        }}
+                        inputProps={{ 'aria-label': 'search' }}
+                    /> */}
+                {/* </div> */}
+            </Toolbar>
+        </AppBar>
+    );
+};
 
-export default NavBar
+export default NavBar;

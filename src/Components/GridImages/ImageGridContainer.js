@@ -37,6 +37,7 @@ const ImageGridContainer = () => {
     return (
         <div>
             <select
+                style={{ textAlign: 'center' }}
                 name=""
                 id=""
                 onChange={event => setSelectedCategory(event.target.value)}
