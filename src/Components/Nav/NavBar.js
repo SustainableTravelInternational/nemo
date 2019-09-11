@@ -8,7 +8,7 @@ import {
 } from '@material-ui/core';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faSearch } from '@fortawesome/free-solid-svg-icons';
 import logo from './logo.png';
 
 const useStyles = makeStyles(theme => ({
@@ -93,6 +93,9 @@ const NavBar = () => {
                 </Button>
                 <Button color="primary" className={classes.button}>
                     Sign up
+                </Button>
+                <Button color="primary" className={classes.button}>
+                    <FontAwesomeIcon icon={faSearch} style={{ padding: 5 }} />
                 </Button>
                 {/* <div className={classes.search}> */}
                 {/*<div className={classes.searchIcon}>
