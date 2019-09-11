@@ -31,12 +31,17 @@ Route::prefix('admin')->group(function () {
 	Route::get('users/create', 'Admin\UserController@create')->name('users.create');
 	Route::get('users/{user}', 'Admin\UserController@show')->name('users.show');
 	Route::get('users/{user}/edit', 'Admin\UserController@edit')->name('users.edit');
-
 	Route::patch('users/{user}', 'Admin\UserController@update')->name('users.patch');
-
 	Route::delete('users/{user}', 'Admin\UserController@destroy')->name('users.delete');
-
 	Route::post('users', 'Admin\UserController@store')->name('users.store');
+
+	// Images Management Routes...
+	Route::get('images', 'Admin\ImageController@index')->name('images');
+	Route::get('imagesData', 'Admin\ImageController@indexData')->name('images.data');
+	Route::get('images/create', 'Admin\ImageController@create')->name('images.create');
+	Route::post('images', 'Admin\ImageController@store')->name('images.store');
+	Route::delete('images/{image}', 'Admin\ImageController@destroy')->name('images.delete');
+
 });
 
 Route::get('/{path?}', [

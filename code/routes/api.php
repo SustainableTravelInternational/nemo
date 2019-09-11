@@ -11,13 +11,13 @@
 |
  */
 
-Route::post('login', 'API\Auth\LoginController@login');
-Route::post('register', 'API\Auth\RegisterController@register');
+Route::post('user/login', 'API\Auth\LoginController@login');
+Route::post('user/register', 'API\Auth\RegisterController@register');
 
-// Route::group(['middleware' => 'auth:api'], function () {
-// 	Route::post('details', 'API\AuthController@details');
-// });
+Route::group(['middleware' => 'auth:api'], function () {
+	Route::get('user/details', 'API\UserController@details');
+	Route::post('photoes', 'API\PhotoesController@store');
 
-// Route::get('test', function () {
-// 	return 'test';
-// });
+});
+
+Route::get('photoes', 'API\PhotoesController@index');
