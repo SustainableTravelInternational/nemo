@@ -10,7 +10,7 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Validator;
 use Phaza\LaravelPostgis\Geometries\Point;
 
-class PhotoesController extends Controller {
+class PhotoController extends Controller {
 	public function index2() {
 		return Image::select(['users.name', 'users.profile_photo', 'images.photo', 'images.created_at', 'images.notes', 'images.diving_site'])
 			->join('users', 'users.id', 'images.user_id')
