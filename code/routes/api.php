@@ -21,3 +21,4 @@ Route::group(['middleware' => 'auth:api'], function () {
 });
 
 Route::get('photoes', 'API\PhotoesController@index');
+Route::get('categories', 'API\CategoryController@index');
