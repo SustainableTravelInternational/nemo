@@ -6,47 +6,56 @@ import DummyData from '../../DummyData';
 
 const ImageGridContainer = () => {
     const [images, setImages] = useState(DummyData);
-    const [categories, setCategories] = useState(['all', 'coral', 'damaged']);
-    const [selectedCategory, setSelectedCategory] = useState('all');
+    const [categories, setCategories] = useState();
+    const [selectedCategory, setSelectedCategory] = useState('All');
 
     const fetchImages = () => {
-        async function fetchData() {
-            const res = await axios.get('https');
-            res.then(res => setImages(res.data).catch(err => console.log(err)));
-        }
-        fetchData();
+        // axios
+        //     .get('http://localhost:8000/api/photos')
+        //     .then(res => {
+        //         setCategories(res.data);
+        //     })
+        //     .catch(err => console.log(err));
     };
 
     const fetchCategories = () => {
-        async function fetchData() {
-            const res = await axios.get('https');
-            res.then(res =>
-                setCategories(res.data).catch(err => console.log(err))
-            );
-        }
-        fetchData();
+        axios
+            .get('http://localhost:8000/api/categories')
+            .then(res => {
+                let fetchedCategories = res.data.map(cat => cat.name);
+                console.log(fetchedCategories);
+                setCategories(['All', ...fetchedCategories]);
+            })
+            .catch(err => console.log(err));
     };
 
-    useEffect(() => fetchImages());
-    useEffect(() => fetchCategories());
+    useEffect(() => {
+        fetchImages();
+    }, []);
+
+    useEffect(() => {
+        fetchCategories();
+    }, []);
 
     const filteredImages = () => {
-        if (selectedCategory === 'all') return images;
-        return images.filter(image => image.categories == selectedCategory);
+        if (selectedCategory === 'All') return images;
+        return images.filter(image =>
+            image.categories.includes(selectedCategory)
+        );
     };
     return (
         <div>
             <select
-                style={{ textAlign: 'center' }}
                 name=""
                 id=""
                 onChange={event => setSelectedCategory(event.target.value)}
             >
-                {categories.map(category => (
-                    <option value={category} key={category}>
-                        {category}
-                    </option>
-                ))}
+                {categories &&
+                    categories.map(category => (
+                        <option value={category} key={category}>
+                            {category}
+                        </option>
+                    ))}
             </select>
             <ImageGrid images={filteredImages()} />
         </div>
