@@ -2,6 +2,7 @@ import React from 'react';
 import {
     AppBar,
     Button,
+    IconButton,
     InputBase,
     Toolbar,
     Typography,
@@ -40,6 +41,9 @@ const useStyles = makeStyles(theme => ({
         fontWeight: 'unset',
         borderRadius: 25,
         textTransform: 'unset',
+        margin: 10,
+        paddingLeft: 20,
+        paddingRight: 20,
     },
     search: {
         position: 'relative',
@@ -94,9 +98,17 @@ const NavBar = () => {
                 <Button color="primary" className={classes.button}>
                     Sign up
                 </Button>
-                <Button color="primary" className={classes.button}>
-                    <FontAwesomeIcon icon={faSearch} style={{ padding: 5 }} />
-                </Button>
+                <IconButton
+                    color="primary"
+                    className={classes.button}
+                    style={{ padding: 5 }}
+                    aria-label="search"
+                >
+                    <FontAwesomeIcon
+                        icon={faSearch}
+                        style={{ padding: 5, fontSize: '1rem' }}
+                    />
+                </IconButton>
                 {/* <div className={classes.search}> */}
                 {/*<div className={classes.searchIcon}>
                          <SearchIcon /> 
