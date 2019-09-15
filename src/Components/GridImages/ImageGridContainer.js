@@ -23,7 +23,6 @@ const ImageGridContainer = () => {
             .get('http://localhost:8000/api/categories')
             .then(res => {
                 let fetchedCategories = res.data.map(cat => cat.name);
-                console.log(fetchedCategories);
                 setCategories(['All', ...fetchedCategories]);
             })
             .catch(err => console.log(err));

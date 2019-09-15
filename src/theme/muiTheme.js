@@ -4,7 +4,7 @@ const theme = createMuiTheme({
     typography: {
         useNextVariants: true,
     },
-    shadows: ["none"],
+    shadows: ['none'],
     palette: {
         primary: {
             light: '#03a9f4',
@@ -18,7 +18,21 @@ const theme = createMuiTheme({
             dark: '#f79620',
             contrastText: '#fff',
         },
-    }
+    },
+    overrides: {
+        MuiButton: {
+            root: {
+                borderRadius: 25,
+                margin: 10,
+                paddingLeft: 20,
+                paddingRight: 20,
+            },
+            text: {
+                fontWeight: 'unset',
+                textTransform: 'unset',
+            },
+        },
+    },
 });
 
 export default theme;

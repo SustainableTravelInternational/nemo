@@ -10,6 +10,7 @@ import {
 import { fade, makeStyles } from '@material-ui/core/styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faSearch } from '@fortawesome/free-solid-svg-icons';
+import SubmitPhotoButton from './SubmitPhotoButton';
 import logo from './logo.png';
 
 const useStyles = makeStyles(theme => ({
@@ -36,14 +37,6 @@ const useStyles = makeStyles(theme => ({
         },
         color: '#28b7b2',
         fontSize: 36,
-    },
-    button: {
-        fontWeight: 'unset',
-        borderRadius: 25,
-        textTransform: 'unset',
-        margin: 10,
-        paddingLeft: 20,
-        paddingRight: 20,
     },
     search: {
         position: 'relative',
@@ -84,23 +77,10 @@ const NavBar = () => {
                 <div style={{ flexGrow: 1, flexBasis: 400 }}>
                     <img className={classes.logo} src={logo} alt={'NEMO'} />
                 </div>
-                <Button
-                    variant="contained"
-                    color="primary"
-                    className={classes.button}
-                >
-                    <FontAwesomeIcon
-                        icon={faPlus}
-                        style={{ paddingRight: 5 }}
-                    />
-                    Submit your photos
-                </Button>
-                <Button color="primary" className={classes.button}>
-                    Sign up
-                </Button>
+                <SubmitPhotoButton />
+                <Button color="primary">Sign up</Button>
                 <IconButton
                     color="primary"
-                    className={classes.button}
                     style={{ padding: 5 }}
                     aria-label="search"
                 >
