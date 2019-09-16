@@ -15,10 +15,7 @@ const SignUpButton = () => {
 
     return (
         <>
-            <Button
-                color="primary"
-                onClick={handleClickOpen}
-            >
+            <Button color="primary" onClick={handleClickOpen}>
                 Sign Up
             </Button>
             {open && <SignUpForm open={open} handleClose={handleClose} />}

@@ -1,9 +1,5 @@
 import React from 'react';
-import {
-    AppBar,
-    Toolbar,
-    IconButton
-} from '@material-ui/core';
+import { AppBar, Toolbar, IconButton } from '@material-ui/core';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
@@ -66,9 +62,9 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-const NavBar = (props) => {
+const NavBar = props => {
     const classes = useStyles();
-    const {handleClickImageForm} = props;
+    const { handleClickImageForm } = props;
 
     return (
         <AppBar position="sticky" className={classes.appBar}>

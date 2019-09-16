@@ -4,18 +4,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 const SubmitPhotoButton = props => {
-    const {handleClick} = props;
+    const { handleClick } = props;
     return (
-        <>
-            <Button
-                variant="contained"
-                color="primary"
-                onClick={handleClick}
-            >
-                <FontAwesomeIcon icon={faPlus} style={{ paddingRight: 5 }} />
-                Submit your photos
-            </Button>
-        </>
+        <Button variant="contained" color="primary" onClick={handleClick}>
+            <FontAwesomeIcon icon={faPlus} style={{ paddingRight: 5 }} />
+            Submit your photos
+        </Button>
     );
 };
 
