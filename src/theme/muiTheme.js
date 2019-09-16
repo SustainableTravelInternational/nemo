@@ -26,10 +26,8 @@ const theme = createMuiTheme({
                 margin: 10,
                 paddingLeft: 20,
                 paddingRight: 20,
-            },
-            text: {
-                fontWeight: 'unset',
                 textTransform: 'unset',
+                fontWeight: 'unset',
             },
         },
     },

@@ -66,8 +66,9 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-const NavBar = () => {
+const NavBar = (props) => {
     const classes = useStyles();
+    const {handleClickImageForm} = props;
 
     return (
         <AppBar position="sticky" className={classes.appBar}>
@@ -75,7 +76,7 @@ const NavBar = () => {
                 <div style={{ flexGrow: 1, flexBasis: 400 }}>
                     <img className={classes.logo} src={logo} alt={'NEMO'} />
                 </div>
-                <SubmitPhotoButton />
+                <SubmitPhotoButton handleClick={handleClickImageForm} />
                 <SignUpButton />
                 <IconButton
                     color="primary"
