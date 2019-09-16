@@ -14,7 +14,7 @@ const ImageGridContainer = () => {
         // axios
         //     .get('http://localhost:8000/api/photos')
         //     .then(res => {
-        //         setCategories(res.data);
+        //         setImages(res.data);
         //     })
         //     .catch(err => console.log(err));
     };

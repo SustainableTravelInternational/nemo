@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button } from '@material-ui/core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import PhotoForm from '../Modular/PhotoForm';
 
 const SubmitPhotoButton = props => {
