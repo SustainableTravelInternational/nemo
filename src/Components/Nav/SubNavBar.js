@@ -44,16 +44,16 @@ const SubNavBar = props => {
                 size="small"
                 aria-label="small contained primary button group"
             >
-                <Button ref={anchorRef} onClick={handleFilterToggle} style={{marginRight: 0}}>
+                <Button ref={anchorRef} onClick={handleFilterToggle} style={{marginRight: 1, width: 120, display: 'flex', justifyContent: 'space-around'}}>
                     <FontAwesomeIcon
                         icon={faFilter}
-                        style={{ paddingRight: 5 }}
+                        style={{ padding: '0 5px' }}
                     />{' '}
                     Filter
                 </Button>
-                <Button style={{marginLeft: 0}}>
-                    <FontAwesomeIcon icon={faMap} style={{ paddingRight: 5 }} />{' '}
-                    Map
+                <Button style={{marginLeft: 1, width: 120, display: 'flex', justifyContent: 'space-around'}}>
+                    <FontAwesomeIcon icon={faMap} style={{ padding: '0 5px' }} />{' '}
+                    Map view
                 </Button>
             </ButtonGroup>
             <Popper
