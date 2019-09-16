@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ImageGrid from './ImageGrid';
+import SubNavBar from '../Nav/SubNavBar';
 
 import DummyData from '../../DummyData';
 
@@ -43,21 +44,13 @@ const ImageGridContainer = () => {
         );
     };
     return (
-        <div>
-            <select
-                name=""
-                id=""
-                onChange={event => setSelectedCategory(event.target.value)}
-            >
-                {categories &&
-                    categories.map(category => (
-                        <option value={category} key={category}>
-                            {category}
-                        </option>
-                    ))}
-            </select>
+        <>
+            <SubNavBar
+                categories={categories}
+                setSelectedCategory={setSelectedCategory}
+            />
             <ImageGrid images={filteredImages()} />
-        </div>
+        </>
     );
 };
 
