@@ -1,16 +1,14 @@
 import React from 'react';
 import {
     AppBar,
-    Button,
-    IconButton,
-    InputBase,
     Toolbar,
-    Typography,
+    IconButton
 } from '@material-ui/core';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus, faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import SubmitPhotoButton from './SubmitPhotoButton';
+import SignUpButton from './SignUpButton';
 import logo from './logo.png';
 
 const useStyles = makeStyles(theme => ({
@@ -78,7 +76,7 @@ const NavBar = () => {
                     <img className={classes.logo} src={logo} alt={'NEMO'} />
                 </div>
                 <SubmitPhotoButton />
-                <Button color="primary">Sign up</Button>
+                <SignUpButton />
                 <IconButton
                     color="primary"
                     style={{ padding: 5 }}
