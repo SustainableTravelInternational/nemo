@@ -12,7 +12,7 @@ const ImageGridContainer = () => {
 
     const fetchImages = () => {
         // axios
-        //     .get('http://localhost:8000/api/photos')
+        //     .get(process.env.REACT_APP_API_URL + '/photos')
         //     .then(res => {
         //         setImages(res.data);
         //     })
@@ -21,7 +21,7 @@ const ImageGridContainer = () => {
 
     const fetchCategories = () => {
         axios
-            .get('http://localhost:8000/api/categories')
+            .get(process.env.REACT_APP_API_URL + '/categories')
             .then(res => {
                 let fetchedCategories = res.data.map(cat => cat.name);
                 setCategories(['All', ...fetchedCategories]);
