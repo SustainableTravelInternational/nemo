@@ -16,7 +16,7 @@ Route::post('user/register', 'API\Auth\RegisterController@register');
 
 Route::group(['middleware' => 'auth:api'], function () {
 	Route::get('user/details', 'API\UserController@details');
-	Route::post('photoes', 'API\PhotoesController@store');
+	Route::post('photos', 'API\PhotosController@store');
 
 });
 
