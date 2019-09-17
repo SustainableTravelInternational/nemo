@@ -1,17 +1,21 @@
 import React, { useState } from 'react';
+import axios from 'axios';
+import { Formik } from 'formik';
 import {
     Button,
     Dialog,
     DialogContent,
     DialogContentText,
     DialogTitle,
+    FormControl,
     TextField,
 } from '@material-ui/core';
 
 const SignUpForm = props => {
-    const { open, handleClose } = props;
+    const { open, handleClose, setUserToken, setUser } = props;
     const [signup, setSignup] = useState(true);
     const [login, setLogin] = useState(false);
+
     const RenderForm = (e, formType) => {
         e.preventDefault();
         if (formType === 'login') {
@@ -43,44 +47,137 @@ const SignUpForm = props => {
                         Login to share your photos to help save our reefs.
                     </DialogContentText>
                 )}
+                <Formik
+                    initialValues={{ email: '', password: '', name: '' }}
+                    onSubmit={(values, actions) => {
+                        if (login) {
+                            axios
+                                .post(
+                                    process.env.REACT_APP_API_URL +
+                                        '/user/login',
+                                    values
+                                )
+                                .then(
+                                    res => {
+                                        actions.setSubmitting(false);
 
-                <TextField
-                    autoFocus
-                    label="Email address"
-                    id="email"
-                    type="email"
-                    fullWidth
-                    variant="outlined"
-                    margin="normal"
+                                        setUserToken(res.data.token);
+                                        axios
+                                            .get(
+                                                process.env.REACT_APP_API_URL +
+                                                    '/user/details',
+                                                {
+                                                    _token: res.data.token,
+                                                    ...values,
+                                                }
+                                            )
+                                            .then(res =>
+                                                setUser(res.data).catch(err =>
+                                                    console.log(err)
+                                                )
+                                            );
+                                        handleClose();
+                                    },
+                                    error => {
+                                        actions.setSubmitting(false);
+                                        actions.setErrors(error);
+                                        actions.setStatus({
+                                            msg:
+                                                'Set some arbitrary status or data',
+                                        });
+                                    }
+                                );
+                        }
+                    }}
+                    render={({
+                        values,
+                        errors,
+                        status,
+                        touched,
+                        handleBlur,
+                        handleChange,
+                        handleSubmit,
+                        isSubmitting,
+                    }) => (
+                        <form onSubmit={handleSubmit}>
+                            <FormControl fullWidth>
+                                <TextField
+                                    autoFocus
+                                    onChange={handleChange}
+                                    label="Email address"
+                                    id="email"
+                                    type="email"
+                                    fullWidth
+                                    variant="outlined"
+                                    margin="normal"
+                                    value={values.email}
+                                    required
+                                />
+                                {errors.email && (
+                                    <DialogContentText>
+                                        {errors.email}
+                                    </DialogContentText>
+                                )}
+                                <TextField
+                                    onChange={handleChange}
+                                    label="Password"
+                                    id="password"
+                                    type="password"
+                                    fullWidth
+                                    variant="outlined"
+                                    margin="normal"
+                                    value={values.password}
+                                    required
+                                />
+                                {errors.password && (
+                                    <DialogContentText>
+                                        {errors.password}
+                                    </DialogContentText>
+                                )}
+                                {signup && (
+                                    <TextField
+                                        onChange={handleChange}
+                                        label="First name"
+                                        id="name"
+                                        type="First Name"
+                                        fullWidth
+                                        variant="outlined"
+                                        margin="normal"
+                                        value={values.name}
+                                        required
+                                    />
+                                )}
+                                {errors.name && (
+                                    <DialogContentText>
+                                        {errors.name}
+                                    </DialogContentText>
+                                )}
+                            </FormControl>
+                            {signup && (
+                                <Button
+                                    type="submit"
+                                    disabled={isSubmitting}
+                                    variant="contained"
+                                    color="primary"
+                                    fullWidth
+                                >
+                                    Sign Up
+                                </Button>
+                            )}
+                            {login && (
+                                <Button
+                                    type="submit"
+                                    disabled={isSubmitting}
+                                    variant="contained"
+                                    color="primary"
+                                    fullWidth
+                                >
+                                    Login
+                                </Button>
+                            )}
+                        </form>
+                    )}
                 />
-                <TextField
-                    label="Password"
-                    id="password"
-                    type="password"
-                    fullWidth
-                    variant="outlined"
-                    margin="normal"
-                />
-                {signup && (
-                    <TextField
-                        label="First name"
-                        id="firstName"
-                        type="First Name"
-                        fullWidth
-                        variant="outlined"
-                        margin="normal"
-                    />
-                )}
-                {signup && (
-                    <Button variant="contained" color="primary" fullWidth>
-                        Sign Up
-                    </Button>
-                )}
-                {login && (
-                    <Button variant="contained" color="primary" fullWidth>
-                        Login
-                    </Button>
-                )}
                 {signup && (
                     <DialogContentText>
                         If you already have an account,{' '}

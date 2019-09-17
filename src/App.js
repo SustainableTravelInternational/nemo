@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useRoutes } from 'hookrouter';
 import ImageGridContainer from './Components/GridImages/ImageGridContainer';
 import SingleImageContainer from './Components/SingleImage/SingleImageContainer';
@@ -11,6 +11,8 @@ import muiTheme from './theme/muiTheme';
 
 const App = () => {
     const [openImageForm, setOpenImageForm] = useState(false);
+    const [userToken, setUserToken] = useState('');
+    const [user, setUser] = useState();
 
     const handleClickImageForm = () => {
         setOpenImageForm(!openImageForm);
@@ -25,7 +27,11 @@ const App = () => {
     const routeResult = useRoutes(routes);
     return (
         <MuiThemeProvider theme={muiTheme}>
-            <NavBar handleClickImageForm={handleClickImageForm} />
+            <NavBar
+                handleClickImageForm={handleClickImageForm}
+                setUserToken={setUserToken}
+                setUser={setUser}
+            />
             {openImageForm && (
                 <ImageForm
                     open={openImageForm}
