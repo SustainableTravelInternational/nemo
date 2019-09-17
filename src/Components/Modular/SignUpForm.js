@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
     Button,
     Dialog,
@@ -8,20 +8,42 @@ import {
     TextField,
 } from '@material-ui/core';
 
-
 const SignUpForm = props => {
     const { open, handleClose } = props;
+    const [signup, setSignup] = useState(true);
+    const [login, setLogin] = useState(false);
+    const RenderForm = (e, formType) => {
+        e.preventDefault();
+        if (formType === 'login') {
+            setSignup(false);
+            setLogin(true);
+        } else {
+            setSignup(true);
+            setLogin(false);
+        }
+    };
 
     return (
         <Dialog
             open={open}
             onClose={handleClose}
             aria-labelledby="form-dialog-title"
-            maxWidth={"xs"}
+            maxWidth={'xs'}
         >
-            <DialogTitle>Create your account</DialogTitle>
+            {signup && <DialogTitle>Create your account</DialogTitle>}
+            {login && <DialogTitle>Login</DialogTitle>}
             <DialogContent>
-                <DialogContentText>You are a few steps away from sharing. We just need some extra details about you:</DialogContentText>
+                {signup && (
+                    <DialogContentText>
+                        Sign up to share your photos to help save our reefs.
+                    </DialogContentText>
+                )}
+                {login && (
+                    <DialogContentText>
+                        Login to share your photos to help save our reefs.
+                    </DialogContentText>
+                )}
+
                 <TextField
                     autoFocus
                     label="Email address"
@@ -32,7 +54,6 @@ const SignUpForm = props => {
                     margin="normal"
                 />
                 <TextField
-                    autoFocus
                     label="Password"
                     id="password"
                     type="password"
@@ -40,19 +61,42 @@ const SignUpForm = props => {
                     variant="outlined"
                     margin="normal"
                 />
-                <TextField
-                    autoFocus
-                    label="First name"
-                    id="firstName"
-                    type="First Name"
-                    fullWidth
-                    variant="outlined"
-                    margin="normal"
-                />
-                <Button variant="contained" color="primary" fullWidth>
-                    Sign Up
-                </Button>
-                <DialogContentText>If you already have an account, login here</DialogContentText>
+                {signup && (
+                    <TextField
+                        label="First name"
+                        id="firstName"
+                        type="First Name"
+                        fullWidth
+                        variant="outlined"
+                        margin="normal"
+                    />
+                )}
+                {signup && (
+                    <Button variant="contained" color="primary" fullWidth>
+                        Sign Up
+                    </Button>
+                )}
+                {login && (
+                    <Button variant="contained" color="primary" fullWidth>
+                        Login
+                    </Button>
+                )}
+                {signup && (
+                    <DialogContentText>
+                        If you already have an account,{' '}
+                        <a href="/" onClick={e => RenderForm(e, 'login')}>
+                            login here
+                        </a>
+                    </DialogContentText>
+                )}
+                {login && (
+                    <DialogContentText>
+                        If you haven't got an account,{' '}
+                        <a href="/" onClick={e => RenderForm(e, 'signup')}>
+                            signup here
+                        </a>
+                    </DialogContentText>
+                )}
             </DialogContent>
         </Dialog>
     );

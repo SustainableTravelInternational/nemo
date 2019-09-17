@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import ImageUpload from './ImageUpload';
+
 import {
     Button,
     Checkbox,
     Typography,
-    DialogTitle,
     FormGroup,
     FormControlLabel,
     Grid,
     Paper,
     TextField,
 } from '@material-ui/core';
-
-import ImageUpload from './ImageUpload';
+import StyleConstants from '../../theme/StyleConstants';
 
 const ImageForm = props => {
     const { open, handleClose } = props;
@@ -21,7 +21,7 @@ const ImageForm = props => {
 
     const fetchCategories = () => {
         axios
-            .get('http://localhost:8000/api/categories')
+            .get(process.env.REACT_APP_API_URL + '/categories')
             .then(res => {
                 let fetchedCategories = res.data.map(cat => cat.name);
                 setCategories(['All', ...fetchedCategories]);
@@ -46,9 +46,7 @@ const ImageForm = props => {
         });
     };
 
-    const [selectedDate, setSelectedDate] = React.useState(
-        new Date('2014-08-18T21:11:54')
-    );
+    const [selectedDate, setSelectedDate] = useState(new Date());
 
     const handleDateChange = date => {
         setSelectedDate(date);
@@ -60,8 +58,8 @@ const ImageForm = props => {
             onClose={handleClose}
             aria-labelledby="form-dialog-title"
             style={{
-                maxWidth: 800,
-                margin: 'auto',
+                maxWidth: StyleConstants.maxWidth,
+                margin: '20px auto',
                 padding: 20,
                 backgroundColor: '#f8f8f8',
             }}
@@ -136,6 +134,7 @@ const ImageForm = props => {
                             id="date"
                             label="Date"
                             type="date"
+                            defaultValue={selectedDate}
                             InputLabelProps={{
                                 shrink: true,
                             }}
@@ -150,11 +149,12 @@ const ImageForm = props => {
                         />
                     </Grid>
                 </Grid>
-
-                <Button color="primary">Cancel</Button>
-                <Button variant="contained" color="primary">
-                    Post photos
-                </Button>
+                <Grid container item justify="flex-end">
+                    <Button color="primary">Cancel</Button>
+                    <Button variant="contained" color="primary">
+                        Post photos
+                    </Button>
+                </Grid>
             </Grid>
         </Paper>
     );

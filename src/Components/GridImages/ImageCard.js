@@ -13,8 +13,7 @@ import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 
 const useStyles = makeStyles(theme => ({
     card: {
-        maxWidth: 480,
-        minWidth: 400,
+        maxWidth: 'calc(100vw - 40px)',
     },
     textPadding: {
         padding: 0,

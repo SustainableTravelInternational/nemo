@@ -1,7 +1,8 @@
 import React, { useCallback, useMemo } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFileUpload } from '@fortawesome/free-solid-svg-icons';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import StyleConstants from '../../theme/StyleConstants';
 
 const ImageUpload = () => {
     const onDrop = useCallback(acceptedFiles => {
@@ -22,20 +23,23 @@ const ImageUpload = () => {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        padding: '20px',
-        borderWidth: 2,
-        borderRadius: 2,
-        borderColor: '#eeeeee',
-        borderStyle: 'dashed',
-        backgroundColor: '#fafafa',
-        color: '#bdbdbd',
+        justifyContent: 'center',
+        borderWidth: 1,
+        borderRadius: 1,
+        borderStyle: 'solid',
+        borderColor: StyleConstants.colors.primary.main,
+        backgroundColor: StyleConstants.colors.grey,
+        color: StyleConstants.colors.primary.main,
         outline: 'none',
         transition: 'border .24s ease-in-out',
-        width: 300,
+        width: 100,
+        height: 100,
+        margin: '10px 10px 10px 0',
     };
 
     const activeStyle = {
-        borderColor: '#2196f3',
+        borderColor: StyleConstants.colors.primary.dark,
+        color: StyleConstants.colors.primary.dark,
     };
 
     const acceptStyle = {
@@ -52,20 +56,21 @@ const ImageUpload = () => {
             ...(isDragAccept ? acceptStyle : {}),
             ...(isDragReject ? rejectStyle : {}),
         }),
-        [isDragActive, isDragReject]
+        [
+            isDragActive,
+            isDragReject,
+            acceptStyle,
+            activeStyle,
+            baseStyle,
+            isDragAccept,
+            rejectStyle,
+        ]
     );
 
     return (
         <div {...getRootProps({ style })}>
             <input {...getInputProps()} />
-            {isDragActive ? (
-                <p>Drop the Image </p>
-            ) : (
-                <>
-                    <p>Upload Image</p>
-                    <FontAwesomeIcon icon={faFileUpload} />
-                </>
-            )}
+            <FontAwesomeIcon icon={faPlus} />
         </div>
     );
 };

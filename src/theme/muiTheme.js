@@ -1,4 +1,5 @@
 import { createMuiTheme } from '@material-ui/core/styles';
+import StyleConstants from './StyleConstants';
 
 const theme = createMuiTheme({
     typography: {
@@ -7,15 +8,15 @@ const theme = createMuiTheme({
     shadows: ['none'],
     palette: {
         primary: {
-            light: '#03a9f4',
-            main: '#28b7b2',
-            dark: '#03a9f4',
+            light: StyleConstants.colors.primary.light,
+            main: StyleConstants.colors.primary.main,
+            dark: StyleConstants.colors.primary.dark,
             contrastText: '#fff',
         },
         secondary: {
-            light: '#f79620',
-            main: '#f79620',
-            dark: '#f79620',
+            light: StyleConstants.colors.secondary.light,
+            main: StyleConstants.colors.secondary.main,
+            dark: StyleConstants.colors.secondary.dark,
             contrastText: '#fff',
         },
     },
