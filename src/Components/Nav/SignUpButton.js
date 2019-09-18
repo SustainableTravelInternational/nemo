@@ -3,7 +3,7 @@ import { Button } from '@material-ui/core';
 import SignUpForm from '../Modular/SignUpForm';
 
 const SignUpButton = props => {
-    const { setUserToken, setUser } = props;
+    const { setUserToken } = props;
     const [open, setOpen] = useState(false);
 
     const handleClickOpen = () => {
@@ -24,7 +24,6 @@ const SignUpButton = props => {
                     open={open}
                     handleClose={handleClose}
                     setUserToken={setUserToken}
-                    setUser={setUser}
                 />
             )}
         </>

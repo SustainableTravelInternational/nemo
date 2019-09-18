@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { useRoutes } from 'hookrouter';
 import ImageGridContainer from './Components/GridImages/ImageGridContainer';
 import SingleImageContainer from './Components/SingleImage/SingleImageContainer';
@@ -11,8 +12,19 @@ import muiTheme from './theme/muiTheme';
 
 const App = () => {
     const [openImageForm, setOpenImageForm] = useState(false);
-    const [userToken, setUserToken] = useState('');
+    const [userToken, setUserToken] = useState();
     const [user, setUser] = useState();
+
+    useEffect(() => {
+        axios
+            .get(process.env.REACT_APP_API_URL + '/user/details', {
+                headers: {
+                    Authorization: 'Bearer ' + userToken,
+                },
+            })
+            .then(res => setUser(res.data.user))
+            .catch(err => console.log(err));
+    }, [userToken]);
 
     const handleClickImageForm = () => {
         setOpenImageForm(!openImageForm);
@@ -30,7 +42,7 @@ const App = () => {
             <NavBar
                 handleClickImageForm={handleClickImageForm}
                 setUserToken={setUserToken}
-                setUser={setUser}
+                user={user}
             />
             {openImageForm && (
                 <ImageForm

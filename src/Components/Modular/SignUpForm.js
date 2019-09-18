@@ -12,7 +12,7 @@ import {
 } from '@material-ui/core';
 
 const SignUpForm = props => {
-    const { open, handleClose, setUserToken, setUser } = props;
+    const { open, handleClose, setUserToken } = props;
     const [signup, setSignup] = useState(true);
     const [login, setLogin] = useState(false);
 
@@ -60,22 +60,7 @@ const SignUpForm = props => {
                                 .then(
                                     res => {
                                         actions.setSubmitting(false);
-
                                         setUserToken(res.data.token);
-                                        axios
-                                            .get(
-                                                process.env.REACT_APP_API_URL +
-                                                    '/user/details',
-                                                {
-                                                    _token: res.data.token,
-                                                    ...values,
-                                                }
-                                            )
-                                            .then(res =>
-                                                setUser(res.data).catch(err =>
-                                                    console.log(err)
-                                                )
-                                            );
                                         handleClose();
                                     },
                                     error => {

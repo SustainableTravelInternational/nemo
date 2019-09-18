@@ -64,7 +64,7 @@ const useStyles = makeStyles(theme => ({
 
 const NavBar = props => {
     const classes = useStyles();
-    const { handleClickImageForm, setUserToken, setUser } = props;
+    const { handleClickImageForm, setUserToken, user } = props;
 
     return (
         <AppBar position="sticky" className={classes.appBar}>
@@ -73,7 +73,7 @@ const NavBar = props => {
                     <img className={classes.logo} src={logo} alt={'NEMO'} />
                 </div>
                 <SubmitPhotoButton handleClick={handleClickImageForm} />
-                <SignUpButton setUserToken={setUserToken} setUser={setUser} />
+                {!user && <SignUpButton setUserToken={setUserToken} />}
                 <IconButton
                     color="primary"
                     style={{ padding: 5 }}
