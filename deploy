@@ -1,0 +1,5 @@
+#!/bin/bash
+
+npm install
+npm run-script build
+cp -a build/* ../nemobk/code/public/
