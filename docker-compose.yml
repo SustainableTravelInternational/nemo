@@ -5,7 +5,7 @@ services:
         ports:
             - "8000:80"
         volumes:
-            - ./code:/var/www/laravel
+            - ./laravel/code:/var/www/laravel
             - ./docker/nginx/vhost.conf:/etc/nginx/conf.d/default.conf
         working_dir:
             /var/www/laravel
@@ -15,7 +15,7 @@ services:
     fpm:
         build: ./docker/php-fpm
         volumes:
-            - ./code:/var/www/laravel
+            - ./laravel/code:/var/www/laravel
         working_dir:
             /var/www/laravel
         networks:
