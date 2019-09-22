@@ -16,6 +16,6 @@ docker-compose exec fpm php artisan migrate
 
 docker-compose exec fpm php artisan db:seed
 
-chmod -R go+w laravel/code/bootstrap laravel/code/storage
+chmod -R go+w laravel/bootstrap laravel/storage
 
 docker-compose exec fpm php artisan passport:install
