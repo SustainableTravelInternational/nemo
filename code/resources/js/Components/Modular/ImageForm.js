@@ -21,7 +21,7 @@ const ImageForm = props => {
 
     const fetchCategories = () => {
         axios
-            .get(process.env.REACT_APP_API_URL + '/categories')
+            .get('/api/categories')
             .then(res => {
                 let fetchedCategories = res.data.map(cat => cat.name);
                 setCategories(['All', ...fetchedCategories]);

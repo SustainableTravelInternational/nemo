@@ -51,27 +51,21 @@ const SignUpForm = props => {
                     initialValues={{ email: '', password: '', name: '' }}
                     onSubmit={(values, actions) => {
                         if (login) {
-                            axios
-                                .post(
-                                    process.env.REACT_APP_API_URL +
-                                        '/user/login',
-                                    values
-                                )
-                                .then(
-                                    res => {
-                                        actions.setSubmitting(false);
-                                        setUserToken(res.data.token);
-                                        handleClose();
-                                    },
-                                    error => {
-                                        actions.setSubmitting(false);
-                                        actions.setErrors(error);
-                                        actions.setStatus({
-                                            msg:
-                                                'Set some arbitrary status or data',
-                                        });
-                                    }
-                                );
+                            axios.post('/api/user/login', values).then(
+                                res => {
+                                    actions.setSubmitting(false);
+                                    setUserToken(res.data.token);
+                                    handleClose();
+                                },
+                                error => {
+                                    actions.setSubmitting(false);
+                                    actions.setErrors(error);
+                                    actions.setStatus({
+                                        msg:
+                                            'Set some arbitrary status or data',
+                                    });
+                                }
+                            );
                         }
                     }}
                     render={({
