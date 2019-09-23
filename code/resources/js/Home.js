@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useRoutes } from 'hookrouter';
 import ImageGridContainer from './Components/GridImages/ImageGridContainer';
 import SingleImageContainer from './Components/SingleImage/SingleImageContainer';
+import SignUpForm from './Components/Modular/SignUpForm';
 import NotFoundPage from './Components/NotFoundPage';
 import NavBar from './Components/Nav/NavBar';
 import ImageForm from './Components/Modular/ImageForm';
@@ -33,6 +34,8 @@ const Home = () => {
     const routes = {
         '/': () => <ImageGridContainer />,
         '/home': () => <ImageGridContainer />,
+        '/login': () => <SignUpForm open={true} setUserToken={setUserToken} />,
+        '/signup': () => <SignUpForm open={true} setUserToken={setUserToken} />,
         '/p/:id': ({ id }) => <SingleImageContainer id={id} />,
         '/whoops': () => <NotFoundPage />,
     };
@@ -45,12 +48,13 @@ const Home = () => {
                 setUserToken={setUserToken}
                 user={user}
             />
-            {openImageForm && (
+            {openImageForm && user && (
                 <ImageForm
                     open={openImageForm}
                     handleClose={handleClickImageForm}
                 />
             )}
+            {openImageForm && !user && <SignUpForm open={true} setUserToken={setUserToken} />}
             {routeResult || <NotFoundPage />}
         </MuiThemeProvider>
     );
