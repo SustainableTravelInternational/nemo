@@ -27,6 +27,6 @@
 	<div id="root"></div>
     <div id="modal"></div>
 
-    <script src="/js/index.js"></script>
+    <script src="/js/app.js"></script>
 </body>
 </html><?php /**PATH /var/www/laravel/resources/views/web/home.blade.php ENDPATH**/ ?>

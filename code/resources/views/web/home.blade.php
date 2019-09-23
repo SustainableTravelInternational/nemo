@@ -15,6 +15,6 @@
 	<div id="root"></div>
     <div id="modal"></div>
 
-    <script src="/js/index.js"></script>
+    <script src="/js/app.js"></script>
 </body>
 </html>
