@@ -12,7 +12,7 @@ use Phaza\LaravelPostgis\Geometries\Point;
 
 class PhotoController extends Controller {
 	public function index2() {
-		return Image::select(['users.name', 'users.profile_photo', 'users.created_at', 'images.photo', 'images.created_at', 'images.notes', 'images.diving_site'])
+		return Image::select(['users.name', 'users.profile_photo', 'users.created_at', 'images.id', 'images.photo', 'images.created_at', 'images.notes', 'images.diving_site'])
 			->join('users', 'users.id', 'images.user_id')
 			->get();
 	}
@@ -28,16 +28,30 @@ class PhotoController extends Controller {
 		// Search Diving_site
 		$diving_site = $request->input('diving_site', '%');
 
-		$data = Image::select(['users.name', 'users.profile_photo', 'users.created_at as users_created_at', 'images.photo', 'images.created_at as images_created_at', 'images.notes', 'images.diving_site'])
+		// Search by ID
+		$id = $request->input('id');
+
+
+		// $data = [];
+		if ($id) {
+			$data = Image::select(['users.name', 'users.profile_photo', 'users.created_at as users_created_at', 'images.id', 'images.photo', 'images.created_at as images_created_at', 'images.notes', 'images.diving_site'])
 			->join('users', 'users.id', 'images.user_id')
-			->whereHas('categories', function ($query) use ($category) {
-				$query->where('name', 'like', $category);
-			})
-			->where('diving_site', 'like', '%' . $diving_site . '%')
-			->take($pageSize)
-			->skip((($currentPage - 1) * $pageSize))
+			->where('images.id', '=', $id)
 			->get()
 			->toArray();
+		} else {
+			$data = Image::select(['users.name', 'users.profile_photo', 'users.created_at as users_created_at', 'images.id', 'images.photo', 'images.created_at as images_created_at', 'images.notes', 'images.diving_site'])
+						->join('users', 'users.id', 'images.user_id')
+						->whereHas('categories', function ($query) use ($category) {
+							$query->where('name', 'like', $category);
+						})
+						->where('diving_site', 'like', '%' . $diving_site . '%')
+						->take($pageSize)
+						->skip((($currentPage - 1) * $pageSize))
+						->get()
+						->toArray();
+		}
+		
 
 		return $this->prepareImageUrls($data);
 	}

@@ -2,13 +2,14 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useRoutes } from 'hookrouter';
 import { withCookies } from 'react-cookie';
-import ImageGridContainer from './GridImages/ImageGridContainer';
-import SingleImageContainer from './SingleImage/SingleImageContainer';
+
 import AuthDialog from './Auth/AuthDialog';
-import Logout from './Auth/Logout';
-import NotFoundPage from './NotFoundPage';
-import NavBar from './Nav/NavBar';
 import ImageForm from './Modular/ImageForm';
+import ImageGridContainer from './GridImages/ImageGridContainer';
+import Logout from './Auth/Logout';
+import NavBar from './Nav/NavBar';
+import NotFoundPage from './NotFoundPage';
+import SingleImageContainer from './SingleImage/SingleImageContainer';
 
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
 import muiTheme from '../theme/muiTheme';
