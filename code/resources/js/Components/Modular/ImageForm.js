@@ -67,7 +67,7 @@ const ImageForm = props => {
             <Grid container spacing={2}>
                 <Grid item xs={12}>
                     <Typography variant="h6">Your Images</Typography>
-                    <Typography variant="body">
+                    <Typography variant="body2">
                         You can add info to multiple images at once or
                         individually
                     </Typography>
@@ -75,7 +75,7 @@ const ImageForm = props => {
                 </Grid>
                 <Grid item xs={6}>
                     <Typography variant="h6">Location</Typography>
-                    <Typography variant="body">
+                    <Typography variant="body2">
                         The approximate location of where you took the image{' '}
                     </Typography>
                     <TextField

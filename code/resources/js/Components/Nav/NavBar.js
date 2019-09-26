@@ -2,7 +2,7 @@ import React from 'react';
 import { AppBar, IconButton, Toolbar, Typography } from '@material-ui/core';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import SubmitPhotoButton from './SubmitPhotoButton';
 import SignUpButton from './SignUpButton';
 import logo from './logo.png';
@@ -69,16 +69,31 @@ const NavBar = props => {
     return (
         <AppBar position="sticky" className={classes.appBar}>
             <Toolbar className={classes.toolBar}>
-                <div style={{ flexGrow: 1, flexBasis: 400 }}>
+                <a style={{ flexGrow: 1, flexBasis: 400 }} href="/">
                     <img className={classes.logo} src={logo} alt={'NEMO'} />
-                </div>
+                </a>
                 <SubmitPhotoButton handleClick={handleClickImageForm} />
                 {!user && <SignUpButton setUserToken={setUserToken} />}
-                {user && <Typography variant='body'>{user.name}</Typography>}
+                {user && <Typography variant={'body2'}>{user.name}</Typography>}
+                {user && (
+                    <a href="/logout">
+                        <IconButton
+                            color={'primary'}
+                            style={{ padding: 5 }}
+                            aria-label={'search'}
+                        >
+                            <FontAwesomeIcon
+                                icon={faSignOutAlt}
+                                style={{ padding: 5, fontSize: '1rem' }}
+                            />
+                        </IconButton>
+                    </a>
+                )}
+
                 <IconButton
-                    color="primary"
+                    color={'primary'}
                     style={{ padding: 5 }}
-                    aria-label="search"
+                    aria-label={'search'}
                 >
                     <FontAwesomeIcon
                         icon={faSearch}

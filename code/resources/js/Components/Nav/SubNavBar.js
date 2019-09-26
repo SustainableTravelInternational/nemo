@@ -46,10 +46,10 @@ const SubNavBar = props => {
             }}
         >
             <ButtonGroup
-                variant="contained"
-                color="primary"
-                size="small"
-                aria-label="small contained primary button group"
+                variant={'contained'}
+                color={'primary'}
+                size={'small'}
+                aria-label={'small contained primary button group'}
             >
                 <Button
                     ref={anchorRef}

@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { Button } from '@material-ui/core';
-import SignUpForm from '../Modular/SignUpForm';
+import AuthDialog from '../Auth/AuthDialog';
 
 const SignUpButton = props => {
-    const { setUserToken } = props;
     const [open, setOpen] = useState(false);
 
     const handleClickOpen = () => {
@@ -19,13 +18,7 @@ const SignUpButton = props => {
             <Button color="primary" onClick={handleClickOpen}>
                 Sign Up
             </Button>
-            {open && (
-                <SignUpForm
-                    open={open}
-                    handleClose={handleClose}
-                    setUserToken={setUserToken}
-                />
-            )}
+            {open && <AuthDialog open={open} handleClose={handleClose} />}
         </>
     );
 };

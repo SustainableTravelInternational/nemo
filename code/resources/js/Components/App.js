@@ -4,7 +4,8 @@ import { useRoutes } from 'hookrouter';
 import { withCookies } from 'react-cookie';
 import ImageGridContainer from './GridImages/ImageGridContainer';
 import SingleImageContainer from './SingleImage/SingleImageContainer';
-import SignUpForm from './Modular/SignUpForm';
+import AuthDialog from './Auth/AuthDialog';
+import Logout from './Auth/Logout';
 import NotFoundPage from './NotFoundPage';
 import NavBar from './Nav/NavBar';
 import ImageForm from './Modular/ImageForm';
@@ -33,12 +34,11 @@ const App = props => {
                     maxAge: 3600, // Will expire after 1hr (value is in number of sec.)
                 });
             })
+            .then(_ => {
+                setUser(props.cookies.get('user'));
+            })
             .catch(err => console.log(err));
     }, [userToken]);
-
-    useEffect(() => {
-        setUser(props.cookies.get('user'));
-    });
 
     const handleClickImageForm = () => {
         setOpenImageForm(!openImageForm);
@@ -47,8 +47,16 @@ const App = props => {
     const routes = {
         '/': () => <ImageGridContainer />,
         '/home': () => <ImageGridContainer />,
-        '/login': () => <SignUpForm open={true} setUserToken={setUserToken} />,
-        '/signup': () => <SignUpForm open={true} setUserToken={setUserToken} />,
+        '/login': () => <AuthDialog open={true} />,
+        '/logout': () => (
+            <Logout
+                setUserToken={setUserToken}
+                setUser={setUser}
+                userToken={userToken}
+                user={user}
+            />
+        ),
+        '/signup': () => <AuthDialog open={true} />,
         '/p/:id': ({ id }) => <SingleImageContainer id={id} />,
         '/whoops': () => <NotFoundPage />,
     };
@@ -67,9 +75,7 @@ const App = props => {
                     handleClose={handleClickImageForm}
                 />
             )}
-            {openImageForm && !user && (
-                <SignUpForm open={true} setUserToken={setUserToken} />
-            )}
+            {openImageForm && !user && <AuthDialog open={true} />}
             {routeResult || <NotFoundPage />}
         </MuiThemeProvider>
     );
