@@ -4,8 +4,8 @@ import ImageGrid from './ImageGrid';
 import SubNavBar from '../Nav/SubNavBar';
 
 const ImageGridContainer = () => {
-    const [images, setImages] = useState();
-    const [categories, setCategories] = useState();
+    const [images, setImages] = useState([]);
+    const [categories, setCategories] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState('All');
 
     const fetchImages = () => {
