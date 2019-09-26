@@ -1,6 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { CookiesProvider } from 'react-cookie';
 
-import Home from './Home';
+import App from './Components/App';
 
-ReactDOM.render(<Home />, document.querySelector('#root'));
+ReactDOM.render(
+    <CookiesProvider>
+        <App />
+    </CookiesProvider>,
+
+    document.querySelector('#root')
+);

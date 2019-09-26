@@ -1,20 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useRoutes } from 'hookrouter';
-import ImageGridContainer from './Components/GridImages/ImageGridContainer';
-import SingleImageContainer from './Components/SingleImage/SingleImageContainer';
-import SignUpForm from './Components/Modular/SignUpForm';
-import NotFoundPage from './Components/NotFoundPage';
-import NavBar from './Components/Nav/NavBar';
-import ImageForm from './Components/Modular/ImageForm';
+import { withCookies } from 'react-cookie';
+import ImageGridContainer from './GridImages/ImageGridContainer';
+import SingleImageContainer from './SingleImage/SingleImageContainer';
+import SignUpForm from './Modular/SignUpForm';
+import NotFoundPage from './NotFoundPage';
+import NavBar from './Nav/NavBar';
+import ImageForm from './Modular/ImageForm';
 
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
-import muiTheme from './theme/muiTheme';
+import muiTheme from '../theme/muiTheme';
 
-const Home = () => {
+const App = props => {
     const [openImageForm, setOpenImageForm] = useState(false);
     const [userToken, setUserToken] = useState();
     const [user, setUser] = useState();
+
+    useEffect(() => {
+        setUserToken(props.cookies.get('userToken'));
+    });
 
     useEffect(() => {
         axios
@@ -23,9 +28,17 @@ const Home = () => {
                     Authorization: 'Bearer ' + userToken,
                 },
             })
-            .then(res => setUser(res.data.user))
+            .then(res => {
+                props.cookies.set('user', res.data.user, {
+                    maxAge: 3600, // Will expire after 1hr (value is in number of sec.)
+                });
+            })
             .catch(err => console.log(err));
     }, [userToken]);
+
+    useEffect(() => {
+        setUser(props.cookies.get('user'));
+    });
 
     const handleClickImageForm = () => {
         setOpenImageForm(!openImageForm);
@@ -54,10 +67,12 @@ const Home = () => {
                     handleClose={handleClickImageForm}
                 />
             )}
-            {openImageForm && !user && <SignUpForm open={true} setUserToken={setUserToken} />}
+            {openImageForm && !user && (
+                <SignUpForm open={true} setUserToken={setUserToken} />
+            )}
             {routeResult || <NotFoundPage />}
         </MuiThemeProvider>
     );
 };
 
-export default Home;
+export default withCookies(App);

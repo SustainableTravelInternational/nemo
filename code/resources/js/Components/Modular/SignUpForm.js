@@ -10,6 +10,7 @@ import {
     FormControl,
     TextField,
 } from '@material-ui/core';
+import { withCookies } from 'react-cookie';
 
 const SignUpForm = props => {
     const { open, handleClose, setUserToken } = props;
@@ -54,7 +55,14 @@ const SignUpForm = props => {
                             axios.post('/api/user/login', values).then(
                                 res => {
                                     actions.setSubmitting(false);
-                                    setUserToken(res.data.token);
+                                    // setUserToken(res.data.token);
+                                    props.cookies.set(
+                                        'userToken',
+                                        res.data.token,
+                                        {
+                                            maxAge: 3600, // Will expire after 1hr (value is in number of sec.)
+                                        }
+                                    );
                                     handleClose();
                                 },
                                 error => {
@@ -178,4 +186,4 @@ const SignUpForm = props => {
     );
 };
 
-export default SignUpForm;
+export default withCookies(SignUpForm);
