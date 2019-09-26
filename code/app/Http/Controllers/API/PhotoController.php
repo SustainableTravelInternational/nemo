@@ -12,7 +12,7 @@ use Phaza\LaravelPostgis\Geometries\Point;
 
 class PhotoController extends Controller {
 	public function index2() {
-		return Image::select(['users.name', 'users.profile_photo', 'images.photo', 'images.created_at', 'images.notes', 'images.diving_site'])
+		return Image::select(['users.name', 'users.profile_photo', 'users.created_at', 'images.photo', 'images.created_at', 'images.notes', 'images.diving_site'])
 			->join('users', 'users.id', 'images.user_id')
 			->get();
 	}
@@ -28,7 +28,7 @@ class PhotoController extends Controller {
 		// Search Diving_site
 		$diving_site = $request->input('diving_site', '%');
 
-		$data = Image::select(['users.name', 'users.profile_photo', 'images.photo', 'images.created_at', 'images.notes', 'images.diving_site', 'images.created_at'])
+		$data = Image::select(['users.name', 'users.profile_photo', 'users.created_at as users_created_at', 'images.photo', 'images.created_at as images_created_at', 'images.notes', 'images.diving_site'])
 			->join('users', 'users.id', 'images.user_id')
 			->whereHas('categories', function ($query) use ($category) {
 				$query->where('name', 'like', $category);
@@ -46,18 +46,19 @@ class PhotoController extends Controller {
 		$result = array();
 
 		foreach ($data as $row) {
-			$created_at = Carbon::parse($row['created_at']);
+			$user_created_at = Carbon::parse($row['users_created_at']);
+			$image_created_at = Carbon::parse($row['images_created_at']);
 
 			$row['profile_photo'] = env('DATA_PROFILE_PICTURE_FOLDER') .
-			$created_at->year . '/' .
-			$created_at->month . '/' .
-			$created_at->day . '/' .
+			$user_created_at->year . '/' .
+			$user_created_at->month . '/' .
+			$user_created_at->day . '/' .
 				$row['profile_photo'];
-
+			
 			$row['photo'] = env('DATA_PHOTO_FOLDER') .
-			$created_at->year . '/' .
-			$created_at->month . '/' .
-			$created_at->day . '/' .
+			$image_created_at->year . '/' .
+			$image_created_at->month . '/' .
+			$image_created_at->day . '/' .
 				$row['photo'];
 
 			array_push($result, $row);
