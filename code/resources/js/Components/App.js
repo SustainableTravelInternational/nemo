@@ -23,21 +23,23 @@ const App = props => {
     });
 
     useEffect(() => {
-        axios
-            .get('/api/user/details', {
-                headers: {
-                    Authorization: 'Bearer ' + userToken,
-                },
-            })
-            .then(res => {
-                props.cookies.set('user', res.data.user, {
-                    maxAge: 3600, // Will expire after 1hr (value is in number of sec.)
-                });
-            })
-            .then(_ => {
-                setUser(props.cookies.get('user'));
-            })
-            .catch(err => console.log(err));
+        if (userToken) {
+            axios
+                .get('/api/user/details', {
+                    headers: {
+                        Authorization: 'Bearer ' + userToken,
+                    },
+                })
+                .then(res => {
+                    props.cookies.set('user', res.data.user, {
+                        maxAge: 3600, // Will expire after 1hr (value is in number of sec.)
+                    });
+                })
+                .then(_ => {
+                    setUser(props.cookies.get('user'));
+                })
+                .catch(err => console.log(err));
+        }
     }, [userToken]);
 
     const handleClickImageForm = () => {

@@ -3,20 +3,18 @@ import axios from 'axios';
 import ImageGrid from './ImageGrid';
 import SubNavBar from '../Nav/SubNavBar';
 
-import DummyData from '../../DummyData';
-
 const ImageGridContainer = () => {
-    const [images, setImages] = useState(DummyData);
+    const [images, setImages] = useState();
     const [categories, setCategories] = useState();
     const [selectedCategory, setSelectedCategory] = useState('All');
 
     const fetchImages = () => {
-        // axios
-        //     .get('/api/photos')
-        //     .then(res => {
-        //         setImages(res.data);
-        //     })
-        //     .catch(err => console.log(err));
+        axios
+            .get('/api/photos')
+            .then(res => {
+                setImages(res.data);
+            })
+            .catch(err => console.log(err));
     };
 
     const fetchCategories = () => {

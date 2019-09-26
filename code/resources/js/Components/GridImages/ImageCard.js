@@ -30,19 +30,26 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-const ImageCard = props => {
-    const { image } = props;
+const ImageCard = ({ image }) => {
     const classes = useStyles();
+    const profilePhoto = image.profile_photo ? image.profile_photo : null;
     return (
         <Card className={classes.card}>
             <CardHeader
                 className={`${classes.cardHeader} ${classes.textPadding}`}
                 avatar={
-                    <Avatar aria-label="recipe" className={classes.avatar}>
-                        {image.username ? image.username.charAt(0) : 'N'}
+                    <Avatar
+                        aria-label="recipe"
+                        className={classes.avatar}
+                        src={profilePhoto}
+                    >
+                        {/* // <Avatar aria-label="recipe" className={classes.avatar}> */}
+                        {!profilePhoto && image.name
+                            ? image.name.charAt(0)
+                            : 'N'}
                     </Avatar>
                 }
-                title={image.username ? image.username : 'Nemo'}
+                title={image.name ? image.name : 'Nemo'}
                 subheader={
                     <Typography variant={'caption'}>
                         14 Sep at 03:45PM
@@ -51,14 +58,14 @@ const ImageCard = props => {
             />
             <CardMedia
                 className={classes.media}
-                image={image.imageUrl}
+                image={image.photo}
                 title={image.id}
             />
             <CardContent className={classes.textPadding}>
                 <Typography variant="body2" color="textSecondary" component="p">
-                    {image.note}
+                    {image.notes}
                 </Typography>
-                {image.location && (
+                {image.diving_site && (
                     <Typography
                         variant="caption"
                         color="textSecondary"
@@ -68,7 +75,7 @@ const ImageCard = props => {
                             icon={faMapMarkerAlt}
                             style={{ color: '#f79620', paddingRight: 5 }}
                         />{' '}
-                        {image.location}
+                        {image.diving_site}
                     </Typography>
                 )}
             </CardContent>
