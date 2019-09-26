@@ -15,7 +15,7 @@ class UsersTableSeeder extends Seeder {
 		// Admin user population
 		DB::table('users')->insert([
 			'name' => 'admin',
-			'email' => 'admin@nemo.com',
+			'email' => 'admin@supportnemo.com',
 			'password' => bcrypt('password'),
 			'role' => 'superadmin',
 			'created_at' => Carbon::now(),
