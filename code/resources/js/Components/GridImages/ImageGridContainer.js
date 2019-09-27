@@ -8,9 +8,9 @@ const ImageGridContainer = () => {
     const [categories, setCategories] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState('All');
 
-    const fetchImages = () => {
+    const fetchImages = category => {
         axios
-            .get('/api/photos')
+            .get('/api/photos', { params: { category: category } })
             .then(res => {
                 setImages(res.data);
             })
@@ -28,26 +28,21 @@ const ImageGridContainer = () => {
     };
 
     useEffect(() => {
-        fetchImages();
-    }, []);
+        if (selectedCategory === 'All') return fetchImages();
+        return fetchImages(selectedCategory);
+    }, [selectedCategory]);
 
     useEffect(() => {
         fetchCategories();
     }, []);
 
-    const filteredImages = () => {
-        if (selectedCategory === 'All') return images;
-        return images.filter(image =>
-            image.categories.includes(selectedCategory)
-        );
-    };
     return (
         <>
             <SubNavBar
                 categories={categories}
                 setSelectedCategory={setSelectedCategory}
             />
-            <ImageGrid images={filteredImages()} />
+            <ImageGrid images={images} />
         </>
     );
 };
