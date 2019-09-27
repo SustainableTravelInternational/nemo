@@ -13,7 +13,7 @@ const SingleImageContainer = ({ id }) => {
                 },
             })
             .then(res => {
-                if (res.length) {
+                if (res.data.length) {
                     setImage(res.data[0]);
                 } else {
                     setImage({ error: 'Image Could Not Be Found' });
@@ -22,7 +22,7 @@ const SingleImageContainer = ({ id }) => {
             .catch(err => console.log(err));
     };
 
-    useEffect(() => fetchImage());
+    useEffect(() => fetchImage(), []);
 
     return (
         <div className={'SingleImageContainer'}>
