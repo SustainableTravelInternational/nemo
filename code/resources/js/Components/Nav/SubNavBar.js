@@ -1,20 +1,11 @@
 import React, { useState } from 'react';
-import {
-    ClickAwayListener,
-    Button,
-    ButtonGroup,
-    Grow,
-    MenuList,
-    MenuItem,
-    Paper,
-    Popper,
-} from '@material-ui/core';
+import CategoryFilter from './CategoryFilter';
+import { Button, ButtonGroup } from '@material-ui/core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFilter, faMap } from '@fortawesome/free-solid-svg-icons';
 
-const SubNavBar = props => {
+const SubNavBar = ({ categories, setSelectedCategory }) => {
     const [filterOpen, setFilterOpen] = useState(false);
-    const { categories, setSelectedCategory } = props;
     const anchorRef = React.useRef(null);
 
     const handleFilterToggle = () => {
@@ -25,7 +16,6 @@ const SubNavBar = props => {
         if (anchorRef.current && anchorRef.current.contains(event.target)) {
             return;
         }
-
         setFilterOpen(false);
     };
 
@@ -82,45 +72,13 @@ const SubNavBar = props => {
                     Map view
                 </Button>
             </ButtonGroup>
-            <Popper
-                open={filterOpen}
-                anchorEl={anchorRef.current}
-                transition
-                disablePortal
-            >
-                {({ TransitionProps, placement }) => (
-                    <Grow
-                        {...TransitionProps}
-                        style={{
-                            transformOrigin:
-                                placement === 'bottom'
-                                    ? 'center top'
-                                    : 'center bottom',
-                        }}
-                    >
-                        <Paper id="menu-list-grow">
-                            <ClickAwayListener onClickAway={handleClose}>
-                                <MenuList>
-                                    {categories &&
-                                        categories.map(category => (
-                                            <MenuItem
-                                                onClick={event =>
-                                                    handleCategorySelection(
-                                                        event,
-                                                        category
-                                                    )
-                                                }
-                                                key={category}
-                                            >
-                                                {category}
-                                            </MenuItem>
-                                        ))}
-                                </MenuList>
-                            </ClickAwayListener>
-                        </Paper>
-                    </Grow>
-                )}
-            </Popper>
+            <CategoryFilter
+                anchorRef={anchorRef}
+                categories={categories}
+                handleCategorySelection={handleCategorySelection}
+                handleClose={handleClose}
+                filterOpen={filterOpen}
+            />
         </div>
     );
 };
