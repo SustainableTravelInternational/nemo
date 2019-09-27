@@ -32,7 +32,6 @@ class PhotoController extends Controller {
 		$id = $request->input('id');
 
 
-		// $data = [];
 		if ($id) {
 			$data = Image::select(['users.name', 'users.profile_photo', 'users.created_at as users_created_at', 'images.id', 'images.photo', 'images.created_at as images_created_at', 'images.notes', 'images.diving_site'])
 			->join('users', 'users.id', 'images.user_id')
