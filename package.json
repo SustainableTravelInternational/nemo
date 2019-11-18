@@ -1,0 +1,22 @@
+{
+  "name": "nemo",
+  "description": "A laravel and react based laravel-application to help save the reefs",
+  "author": "SustainableTravelInternational",
+  "license": "GPLv3",
+  "homepage": "https://supportnemo.com/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SustainableTravelInternational/nemo.git"
+  },
+  "bugs": {
+    "url": "https://github.com/SustainableTravelInternational/nemo/issues"
+  },
+  "scripts": {
+    "start": "./start.sh"
+  },
+  "engines": {
+    "npm": ">=6.13.0",
+    "node": ">=11.15.0",
+    "docker": ">=19.03.0"
+  }
+}
